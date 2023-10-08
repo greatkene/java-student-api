@@ -16,12 +16,12 @@ public class StudentController {
         this.studentService = studentService;
     }
     @GetMapping
-    public List<Student> getStudents() {
+    public List<Students> getStudents() {
         return studentService.getStudents();
     }
     @PostMapping
-    public void registerNewStudent(@RequestBody Student student) {
-        studentService.addNewStudent(student);
+    public void registerNewStudent(@RequestBody Students students) {
+        studentService.addNewStudent(students);
     }
     @DeleteMapping(path = "{studentId}")
     public void deleteStudent(@PathVariable("studentId") Long studentId) {

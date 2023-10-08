@@ -46,17 +46,18 @@ public class Student {
     public Student() {
     }
 
-
     public Student(String name,
                    String grade,
                    String room,
                    String tp,
+                   LocalDate dob,
                    String email,
                    Parents parents) {
         this.name = name;
         this.grade = grade;
         this.room = room;
         this.tp = tp;
+        this.dob = dob;
         this.email = email;
         this.parents = parents;
     }

@@ -17,16 +17,16 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
     @Autowired
-    public List<Student> getStudents() {
+    public List<Students> getStudents() {
         return studentRepository.findAll();
     }
 
-    public void addNewStudent(Student student) {
-       Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+    public void addNewStudent(Students students) {
+       Optional<Students> studentOptional = studentRepository.findStudentByEmail(students.getEmail());
         if(studentOptional.isPresent()) {
             throw  new IllegalStateException("Email is already taken");
         }
-        studentRepository.save(student);
+        studentRepository.save(students);
     }
 
     public void deleteStudent(Long studentId) {
@@ -38,18 +38,18 @@ public class StudentService {
     }
     @Transactional
     public void updateStudent(Long studentId, String name, String email) {
-        Student student = studentRepository.findById(studentId)
+        Students students = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException(
                         "student with id " + studentId + " does not exist"));
-        if(name != null && !name.isEmpty() && !Objects.equals(student.getName(), name)) {
-            student.setName(name);
+        if(name != null && !name.isEmpty() && !Objects.equals(students.getName(), name)) {
+            students.setName(name);
         }
-        if(email != null && !email.isEmpty()  && !Objects.equals(student.getEmail(), email)) {
-            Optional<Student> studentOptional = studentRepository.findStudentByEmail(email);
+        if(email != null && !email.isEmpty()  && !Objects.equals(students.getEmail(), email)) {
+            Optional<Students> studentOptional = studentRepository.findStudentByEmail(email);
             if(studentOptional.isPresent()) {
                 throw new IllegalStateException("email taken");
             }
-            student.setEmail(email);
+            students.setEmail(email);
         }
     }
 }

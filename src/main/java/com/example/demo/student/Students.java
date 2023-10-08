@@ -6,7 +6,7 @@ import java.time.Period;
 
 @Entity
 @Table
-public class Student {
+public class Students {
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -25,10 +25,10 @@ public class Student {
     @Transient
     private Integer age;
 
-    public Student() {
+    public Students() {
 
     }
-    public  Student(Long id,
+    public Students(Long id,
                     String name,
                     String email,
                     LocalDate dob
@@ -40,7 +40,7 @@ public class Student {
 
     }
 
-    public  Student(
+    public Students(
             String name,
             String email,
             LocalDate dob
